@@ -1,928 +1,928 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Till the End of the World – Book 1</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Till the End of the World – Official Site</title>
 
-  <!-- Optional Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <!-- Optional Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
-    :root {
-      --bg-main: #020617;
-      --bg-elevated: rgba(15, 23, 42, 0.95);
-      --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.22);
-      --accent-2: #a855f7;
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --border-subtle: rgba(148, 163, 184, 0.2);
-      --shadow-soft: 0 24px 60px rgba(15, 23, 42, 0.9);
-      --radius-lg: 1.25rem;
-    }
+    <style>
+      :root {
+        --bg-main: #020617;
+        --bg-alt: #020618;
+        --accent: #38bdf8;
+        --accent-soft: rgba(56, 189, 248, 0.12);
+        --accent-2: #f97316;
+        --text-main: #e5e7eb;
+        --text-muted: #94a3b8;
+        --card-bg: rgba(15, 23, 42, 0.9);
+        --border-soft: rgba(148, 163, 184, 0.2);
+        --glow-strong: 0 0 30px rgba(56, 189, 248, 0.8);
+      }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #0b1120 0, #020617 42%, #020617 100%);
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
-      padding: 1.75rem;
-    }
-
-    .shell {
-      max-width: 1200px;
-      width: 100%;
-      display: grid;
-      grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
-      gap: 1.5rem;
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.96));
-      border-radius: 1.75rem;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      overflow: hidden;
-    }
-
-    @media (max-width: 900px) {
       body {
-        padding: 1rem;
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #0f172a 0, #020617 50%, #000 100%);
+        color: var(--text-main);
+        min-height: 100vh;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        animation: bgShift 20s infinite alternate ease-in-out;
       }
-      .shell {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
 
-    /* Left side – navigation */
-    .sidebar {
-      position: relative;
-      padding: 1.75rem 1.5rem;
-      border-right: 1px solid var(--border-subtle);
-      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 55%),
-                  radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.18), transparent 55%);
-      overflow: hidden;
-    }
-
-    @media (max-width: 900px) {
-      .sidebar {
-        border-right: none;
-        border-bottom: 1px solid var(--border-subtle);
-      }
-    }
-
-    .glow-orbit {
-      position: absolute;
-      inset: -40%;
-      opacity: 0.45;
-      background:
-        radial-gradient(circle at 20% 0%, rgba(56, 189, 248, 0.25), transparent 55%),
-        radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.2), transparent 52%);
-      filter: blur(2px);
-      pointer-events: none;
-    }
-
-    .sidebar-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .book-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.3rem 0.8rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.8);
-      color: var(--text-muted);
-      font-size: 0.75rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-    }
-
-    .book-tag-dot {
-      width: 0.45rem;
-      height: 0.45rem;
-      border-radius: 999px;
-      background: radial-gradient(circle, var(--accent), #0ea5e9);
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
-    }
-
-    .title {
-      font-family: "Orbitron", system-ui, sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-size: 1.1rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .subtitle {
-      font-size: 1.8rem;
-      line-height: 1.2;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-    }
-
-    .subtitle span {
-      color: var(--accent-2);
-      font-weight: 700;
-    }
-
-    .logline {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 1.25rem;
-      max-width: 24rem;
-    }
-
-    .meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .meta-pill {
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.85);
-    }
-
-    .chapters-label {
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.4rem;
-    }
-
-    .chapter-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.5rem;
-    }
-
-    .chapter-btn {
-      position: relative;
-      border-radius: 0.9rem;
-      border: 1px solid rgba(148, 163, 184, 0.55);
-      padding: 0.55rem 0.65rem;
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9));
-      color: var(--text-main);
-      font-size: 0.8rem;
-      text-align: left;
-      cursor: pointer;
-      transition: all 0.16s ease-out;
-      display: flex;
-      flex-direction: column;
-      gap: 0.1rem;
-    }
-
-    .chapter-btn span {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-
-    .chapter-btn::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      border: 1px solid transparent;
-      pointer-events: none;
-      transition: border-color 0.16s ease-out;
-    }
-
-    .chapter-btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.9);
-      border-color: rgba(56, 189, 248, 0.7);
-    }
-
-    .chapter-btn.active {
-      border-color: var(--accent);
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(15, 23, 42, 0.98));
-      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.65), 0 18px 40px rgba(15, 23, 42, 0.9);
-    }
-
-    .chapter-btn.active::before {
-      border-color: rgba(56, 189, 248, 0.5);
-    }
-
-    .hint {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 0.9rem;
-    }
-
-    /* Right side – content */
-    .content {
-      padding: 1.75rem 1.6rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .content::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 10% 0, rgba(56, 189, 248, 0.12), transparent 55%),
-        radial-gradient(circle at 90% 100%, rgba(168, 85, 247, 0.14), transparent 55%);
-      opacity: 0.75;
-      pointer-events: none;
-    }
-
-    .content-inner {
-      position: relative;
-      z-index: 1;
-      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
-      border-radius: 1.25rem;
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      padding: 1.4rem 1.5rem;
-      max-height: calc(100vh - 4rem);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-    }.hero-image-frame {
-  margin-top: 0.75rem;
-  border-radius: 1rem;
-  border: 1px dashed rgba(148, 163, 184, 0.6);
-  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
-  aspect-ratio: 16 / 9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 0.5rem;
-}
-
-.hero-image-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: 0.9rem;
-}
-
-
-
-    @media (max-width: 900px) {
-      .content-inner {
-        max-height: none;
-      }
-    }
-
-    .content-header {
-<div class="hero-image-frame">
-  <img src="future-city.jpg" alt="Futuristic Image" />
-</div>
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 0.75rem;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-      padding-bottom: 0.6rem;
-    }
-
-    .content-header-left {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
-    }
-
-    .content-label {
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .content-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .content-badge {
-      font-size: 0.7rem;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(56, 189, 248, 0.7);
-      background: var(--accent-soft);
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    .reader {
-      margin-top: 0.25rem;
-      padding: 0.85rem 0.9rem;
-      border-radius: 1rem;
-      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.98));
-      border: 1px solid rgba(148, 163, 184, 0.55);
-      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.85);
-      overflow-y: auto;
-      scrollbar-color: var(--accent) rgba(15, 23, 42, 0.9);
-      scrollbar-width: thin;
-    }
-
-    .reader::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .reader::-webkit-scrollbar-track {
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .reader::-webkit-scrollbar-thumb {
-      background: var(--accent);
-      border-radius: 999px;
-    }
-
-    .chapter-panel {
-      display: none;
-      font-size: 0.93rem;
-      line-height: 1.6;
-    }
-
-    .chapter-panel.active {
-      display: block;
-    }
-
-    .chapter-panel p {
-      margin-bottom: 0.85rem;
-      color: var(--text-main);
-    }
-
-    .chapter-panel p.small {
-      font-size: 0.86rem;
-      color: var(--text-muted);
-    }
-
-    .chapter-panel .scene-break {
-      text-align: center;
-      color: var(--accent-2);
-      font-size: 0.8rem;
-      margin: 0.8rem 0;
-      letter-spacing: 0.3em;
-    }
-
-    .chapter-panel .lead-in {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-
-    .chapter-panel em {
-      color: var(--accent-2);
-      font-style: normal;
-      font-weight: 500;
-    }
-  </style>
-</head>
-<body>
-  <main class="shell">
-    <!-- LEFT: NAVIGATION -->
-    <aside class="sidebar">
-      <div class="glow-orbit"></div>
-      <div class="sidebar-inner">
-        <div class="book-tag">
-          <span class="book-tag-dot"></span>
-          Book 1 · Draft in Progress
-        </div>
-
-        <div class="title">Till the End of the World</div>
-        <div class="subtitle">
-          <span>2050</span> · One World. One Government. Too Many Secrets.
-        </div>
-
-        <p class="logline">
-          A laid-off car worker, a globe-trotting butler, and a circle of hidden masters collide in a
-          near-future where every citizen is chipped, every credit traced, and the world’s food
-          supply is running out.
-        </p>
-
-        <div class="meta-row">
-          <div class="meta-pill">Futuristic Britain · 2050s</div>
-          <div class="meta-pill">Conspiracy · Virus · Cryo-bunkers</div>
-          <div class="meta-pill">Work-in-progress edition</div>
-        </div>
-
-        <div class="chapters-label">Read sample chapters</div>
-        <div class="chapter-grid">
-          <button class="chapter-btn active" data-chapter="prologue">
-            Prologue
-            <span>One world government &amp; AI control</span>
-          </button>
-          <button class="chapter-btn" data-chapter="ch1">
-            Chapter 1 – Bill
-            <span>Last day at the car plant</span>
-          </button>
-          <button class="chapter-btn" data-chapter="ch2">
-            Chapter 2 – James
-            <span>Butler to the elite</span>
-          </button>
-          <button class="chapter-btn" data-chapter="ch3">
-            Chapter 3 – Oliver
-            <span>The food crisis report</span>
-          </button>
-          <button class="chapter-btn" data-chapter="ch4">
-            Chapter 4 – Bill &amp; Marcus
-            <span>Pints, memories &amp; plans</span>
-          </button>
-          <button class="chapter-btn" data-chapter="ch5">
-            Chapter 5 – James
-            <span>The insurance policy</span>
-          </button>
-          <button class="chapter-btn" data-chapter="ch6">
-            Chapter 6 – Bill
-            <span>The email from the lottery</span>
-          </button>
-        </div>
-
-        <p class="hint">
-          Tip: click a chapter on the left – the full text (or a polished teaser) appears on the right.
-        </p>
-      </div>
-    </aside>
-
-    <!-- RIGHT: CONTENT -->
-    <section class="content">
-      <div class="content-inner">
-        <header class="content-header">
-          <div class="content-header-left">
-            <div class="content-label">Current selection</div>
-            <div class="content-title" id="contentTitle">Prologue</div>
-          </div>
-          <div class="content-badge">Draft · Polished</div>
-        </header>
-
-        <div class="reader">
-          <!-- PROLOGUE – FULLY POLISHED & EXPANDED -->
-          <article id="panel-prologue" class="chapter-panel active">
-            <p class="lead-in"><em>Prologue – World Government, 2050</em></p>
-
-            <p>
-              By the middle of the century, the arguments were finally over. After decades of
-              marches, riots and back-room negotiations, the flags came down one by one, and the
-              old United Nations rebranded itself as something new – and far more powerful. The
-              world did not wake up to fanfare or fireworks, just a simple push notification:
-              <em>“UN Resolution 0: The One World Government framework is now in force.”</em>
-            </p>
-
-            <p>
-              For most people, nothing changed at nine o’clock that morning. They still made
-              coffee, still argued with partners, still shouted at the news. But beneath the surface,
-              the machinery shifted. Laws that had taken years to wrangle were stamped through in
-              days. The first priority was simple and brutally efficient:
-              <em>accelerate artificial intelligence everywhere</em>.
-            </p>
-
-            <p>
-              AI didn’t just mean clever phones and chatty assistants anymore. It ran ports and
-              freight hubs, police drones and border crossings. It scheduled surgeries, wrote legal
-              briefs, priced crops, and calculated how many humans could be replaced on any given
-              production line without causing riots. The new world government sold it as
-              compassion: automation for the boring jobs, dignity for the workers, and a
-              <em>Universal Allowance</em> wired straight into every citizen’s account.
-            </p>
-
-            <p>
-              To make it work, they needed a way to follow every transaction, every journey, every
-              life. So, slowly at first, then all at once, came the implants.
-            </p>
-
-            <p>
-              The chip was the size of a grain of rice, pressed under the skin between thumb and
-              forefinger in a bright white clinic that smelled of disinfectant and distant fear. It held
-              your banking details, ID, health records, work history – your entire life compressed
-              into a sliver of engineered crystal. You could still remember the old days, if you were
-              over forty: cash in your pocket, cards in your wallet, the occasional dodgy cash-in-hand
-              for a job that didn’t need to go on the books. Those days were gone.
-            </p>
-
-            <p>
-              In 2050, you tapped your hand to pay for food, to unlock your front door, to board a
-              bus. Government adverts showed smiling families waving their chipped hands at
-              scanners: <em>“No more lost cards, no more forgotten PINs – just you.”</em>
-            </p>
-
-            <p>
-              The retinal and fingerprint scanners came next. At first they were only in airports and
-              high-security sites, then in banks, then in every government building, and finally in the
-              self-service tills at the corner shop. “For your protection,” the adverts said, “to stop
-              fraud and identity theft.” What they didn’t say was that with every scan, the system
-              learned you a little better – your walk, your heartbeat, the angle of your shoulders
-              when you were nervous.
-            </p>
-
-            <p>
-              Crime figures plummeted. On paper, at least.
-            </p>
-
-            <p>
-              In the old days there had been a black market in everything – cash, drugs, weapons,
-              fake passports, borrowed identities. Now almost every transaction left a trail. The
-              new AI compliance nets didn’t sleep. At two in the morning, in a dark data-centre
-              under Geneva, a cluster of machines quietly flagged unusual spending spikes in
-              Cartagena, a sudden flurry of midnight transfers in Lagos, a cluster of unregistered
-              implants in an abandoned warehouse in Rotterdam. Armoured vans rolled out long
-              before most people were awake enough to notice.
-            </p>
-
-            <p>
-              The black market never completely disappeared, but it withered. Those who survived
-              adapted, burrowing deeper, trading favours instead of credits, information instead of
-              cash. But for the vast majority of people, crime became something that happened in
-              old dramas and retro cop shows. For a while, the world felt almost civilised.
-            </p>
-
-            <p>
-              Drugs were the biggest shock. In one sharp, controversial move, the One World
-              Government deregulated narcotics and swallowed the entire industry whole. Heroin,
-              cocaine, synthetics – all of it moved behind the glass of licensed pharmacies. You
-              could still ruin your life if you tried hard enough, but you’d do it in a clean room with a
-              registered dose, under flickering AI supervision, rather than in an alley with a shared
-              needle. The cartels screamed, then bled, then reinvented themselves as “logistics
-              consultants” and “security providers”. Governments took their profits in tax, and
-              quietly diverted a slice to help pay for the Universal Allowance.
-            </p>
-
-            <p>
-              The slogan was everywhere:
-              <em>“No one left behind. A dignified life for every citizen.”</em>
-            </p>
-
-            <p>
-              On paper it worked. The Universal Allowance kept people fed and housed, more or
-              less. Poverty figures fell. So did protest numbers. It was hard to riot when missing a
-              check-in could freeze your chip for “security verification”. There were still marches
-              sometimes – old-school union banners, home-made placards, hand-painted slogans
-              about privacy and freedom. The newscasters called them “heritage protests” and
-              cut away to footage of gleaming driverless buses sliding along spotless streets.
-            </p>
-
-            <p>
-              What most citizens saw was convenience: buses that always arrived on time, streets
-              scrubbed by tireless cleaning drones, hospitals that operated with machine precision.
-              Crime down. Wages guaranteed. The right adverts targeted at the right people at the
-              right moment – a holiday just when you’d been thinking of the beach, a credit offer the
-              day before rent was due.
-            </p>
-
-            <p>
-              What they didn’t see were the people at the very top of the system.
-            </p>
-
-            <p>
-              In glass towers and mountain chateaux, far from the chipped crowds queuing for
-              their Universal Allowance, a handful of men and women watched the graphs twist
-              upward: population, temperature, food demand, water scarcity. They saw the lines
-              crossing years before anyone else did. They had access to the full data sets – not just
-              the tidy, reassuring summaries on the news, but the raw numbers, the uncomfortable
-              projections.
-            </p>
-
-            <p>
-              They saw that even with automation, even with every field wired and every ocean
-              scanned, there would soon be too many people and not enough food. They saw that
-              climate repairs were behind schedule, that the oceans were still poisoned in places
-              the adverts never showed, that the old nuclear scars were still leaking into the food
-              chain. They saw that polite laws and quiet reforms were not going to be enough.
-            </p>
-
-            <p>
-              So while the rest of the world tapped their chips and scrolled their feeds, the
-              so-called Masters began to make other plans: bunkers buried a kilometre under the
-              Alps and Rockies, cryogenic chambers cooled and tested, AI caretakers trained to
-              keep watch long after flesh and bone would have failed. They funded think-tanks,
-              weapons labs, genetic research, virus simulations – each project innocuous on its own,
-              lethal when combined.
-            </p>
-
-            <p>
-              On a quiet night, under a sky washed too clean by the latest pollution scrubbers, the
-              world government congratulated itself on a job well done. Crime was low. Streets
-              were safe. Everyone was chipped and accounted for. The numbers on the surface
-              looked good.
-            </p>
-
-            <p>
-              Deep underground, in a meeting room without windows, seven figures sat around a
-              polished oak table and studied a different set of numbers – ones that didn’t fit into
-              thirty-second news segments. Graphs of grain yields, freshwater supplies, birth rates,
-              fish stocks. A different future taking shape.
-            </p>
-
-            <p>
-              For ordinary people like Bill Walker, about to face his last day at the car plant, or
-              James Buchanan-Smythe, butler to the men in the shadows, life still looked normal
-              enough. A bit more controlled, a bit more convenient, but familiar. Buses ran. Shops
-              opened. Football was still on at the weekend.
-            </p>
-
-            <p>
-              None of them knew it yet, but the countdown had already started.
-            </p>
-          </article>
-
-          <!-- CHAPTER 1 – POLISHED TEASER (FULL TEXT CAN BE ADDED LATER) -->
-          <article id="panel-ch1" class="chapter-panel">
-            <p class="lead-in"><em>Chapter One – Bill</em></p>
-
-            <p>
-              Bill’s alarm screamed into the grey morning, dragging him out of a heavy, dreamless
-              sleep. For a moment he lay there, staring at the ceiling, trying to remember why his
-              stomach felt tight. Then it came back to him: <em>last day at the car plant</em>.
-            </p>
-
-            <p>
-              He reached out, thumbed the alarm off and turned his head. Kate was still sleeping
-              beside him, hair a dark tangle on the pillow, face soft in the early light leaking through
-              the smart-glass. He leaned over and kissed her forehead, holding the moment for
-              half a beat longer than usual. Thirty-five years on the line and this was how it ended –
-              with a payout, a handshake, and a computer deciding a robot could do his job better.
-            </p>
-
-            <p>
-              The bathroom was small but familiar, the tiles a classic black-and-white Victorian
-              pattern that his mate Ted had laid years ago. The power shower curved in a clean
-              semi-circle of glass and chrome, still looking sharp against the peeling paint. Bill
-              caught his reflection as the mirror de-fogged: mid-fifties, broad shoulders softened by
-              years of canteen dinners and after-work pints, greying hair, eyes that had seen too
-              many redundancies posted on the staff board.
-            </p>
-
-            <p>
-              Under the needles of hot water he let his mind wander – the first day he’d walked into
-              the plant at sixteen, nervous and proud; the countless shifts since; the colleagues
-              laid off as AI crawled through the factory. He’d always survived – never took a sick
-              day, always did what was asked. Now the last human section of the line was going
-              fully automated, and his chip already knew it.
-            </p>
-
-            <p class="small">
-              ▶ The full chapter follows Bill through his final shift, the AI-controlled buses, his
-              meeting with Mick Doyle and the surprise £40,000 golden handshake, then his
-              celebration dinner with Kate at the futuristic Far Eastern hotpot restaurant – all while
-              the looming euro lottery jackpot is seeded in the background. (We can drop the full,
-              fully-expanded chapter text into this panel when you’re ready.)
-            </p>
-          </article>
-
-          <!-- CHAPTER 2 – TEASER -->
-          <article id="panel-ch2" class="chapter-panel">
-            <p class="lead-in"><em>Chapter Two – James Buchanan-Smythe</em></p>
-
-            <p>
-              James cradled his flat white as the coffee shop’s window projected a live feed of the
-              Bern skyline – snow-dusted peaks, clean trams, the old city glowing in soft morning
-              light. Out of the seven cities he rotated through, this was his favourite stop. Bern
-              smelled of roasted beans, pine, and money that had been folded neatly and left to
-              grow for generations.
-            </p>
-
-            <p>
-              He looked every inch the discreet professional: perfectly pressed dark suit, silver
-              cufflinks with a crest that meant something only to people with their own private jets,
-              posture relaxed but never sloppy. Underneath it all lived the boy from a rough east
-              London estate, the one who’d learned to dodge gangs and exam failure in the same
-              afternoon.
-            </p>
-
-            <p>
-              Butler to seven different residences, each with its own underground shelter and
-              cryogenic vault, James was paid obscenely well for his trouble. The job came with
-              perks – first-class flights, a pension that would make a CEO jealous, and most
-              importantly, a keycard to a lift that descended a thousand metres below the Swiss
-              granite to where the real insurance policies waited.
-            </p>
-
-            <p class="small">
-              ▶ The full chapter follows James from the coffee shop to the mountain chateau,
-              where he checks on the AI-run underground safety shelter: nuclear backup power,
-              hydroponic farms, cryo-pods, medical bays and redundant AI caretakers – all
-              meticulously maintained for the shadowy “masters” he serves. It sets up his access to
-              secrets no one else gets to see.
-            </p>
-          </article>
-
-          <!-- CHAPTER 3 – TEASER -->
-          <article id="panel-ch3" class="chapter-panel">
-            <p class="lead-in"><em>Chapter Three – Oliver Goldstein</em></p>
-
-            <p>
-              Oliver Goldstein’s office overlooked a slice of city that had been polished for the
-              cameras – manicured rooftop gardens, clean transit lines, holographic adverts selling
-              a future that was always just one upgrade away. His attention, however, was fixed on
-              the one thing no advert could spin: numbers.
-            </p>
-
-            <p>
-              On his screen, the draft of his latest report blinked back at him:
-              <em>Will the World’s Food Run Out?</em> He’d been waiting on one final data packet
-              from Population Expansion – the ten-year projection that would either soften his
-              conclusions or harden them into something brutal. When the encrypted email finally
-              landed in his inbox, he already knew which way it would go.
-            </p>
-
-            <p>
-              Sixteen billion people by mid-century. Current food production nowhere near enough.
-              Fisheries collapsing, topsoil thinning, fresh water growing scarce in all the wrong
-              places. His cursor hovered over the title for only a second before he renamed the
-              report:
-              <em>We Need To Act Now.</em>
-            </p>
-
-            <p class="small">
-              ▶ The full chapter shows Oliver drafting his blunt, uncomfortable report for the UN
-              food and provisions council – including his suggestion of extreme policies like global
-              one-child limits and intensive farming – and hints that certain powerful readers are
-              less interested in feeding people than in using the crisis to reshape the world.
-            </p>
-          </article>
-
-          <!-- CHAPTER 4 – TEASER -->
-          <article id="panel-ch4" class="chapter-panel">
-            <p class="lead-in"><em>Chapter Four – Bill &amp; Marcus</em></p>
-
-            <p>
-              The pub door was aluminium and glass, but everything inside was old-world comfort:
-              a long pine bar, white and grey tiles behind the optics, dark beams criss-crossing the
-              ceiling. A couple of AI bar units glided silently along their tracks, topping up glasses
-              and wiping surfaces with mechanical precision while retro rock hummed in the
-              background.
-            </p>
-
-            <p>
-              Marcus was already in his usual spot, elbow leaning on the bar, pint in hand. His hair
-              was thinner now, but he still had a guitarist’s fingers – long, wiry, stained slightly from
-              nicotine and hard years. When he grinned, Bill saw the same mate he’d once shared
-              tents, cheap beer and dodgy gigs with.
-            </p>
-
-            <p>
-              They talked like they always did – about the past, about “Chunky” and the exploding
-              tin of beans, about how the old, filthy diesel buses had somehow morphed into
-              whisper-quiet AI fleets. Over more pints than they should have had, Bill dropped the
-              first hint about a holiday, then about Benidorm, then – much later – about the world
-              cruise he was already dreaming of, long before the numbers on his lottery ticket
-              changed everything.
-            </p>
-
-            <p class="small">
-              ▶ The full chapter gives a detailed, character-rich night in the pub: banter, backstory,
-              and the slow unfolding of Bill and Marcus’s friendship as they agree on weekly
-              meet-ups and plant the seed of the future holiday to “Blackpool with sun” – Benidorm.
-            </p>
-          </article>
-
-          <!-- CHAPTER 5 – TEASER -->
-          <article id="panel-ch5" class="chapter-panel">
-            <p class="lead-in"><em>Chapter Five – James in Annecy</em></p>
-
-            <p>
-              In Annecy, the air smelled of lake water, baking bread and money on holiday. James
-              walked past parasols and café tables spilling into the street, the mountains rising like
-              a painted backdrop beyond the blue water. He’d done this circuit so many times he
-              could walk it half-asleep, but today he was wide awake. Today was about insurance.
-            </p>
-
-            <p>
-              His contact arrived on time – tall, in black, carrying a slim briefcase that didn’t match
-              the casual tourist crowds. There were pleasantries, coffee orders, small talk for the
-              benefit of the AI waiter’s recording, and then the real pitch: a second, illegal implant.
-              One that could override almost any system, display any PIN, unlock any door with the
-              help of a smart “skeleton key” that could morph to match any lock in the database.
-            </p>
-
-            <p>
-              Seventy-five thousand pounds for a chip, an EMP device the size of a lighter, and a
-              key that could open doors his current employers would never dream of giving him
-              access to. For anyone else it would have been madness. For James, who’d spent his
-              life serving people who always had a backup plan, it felt like simple symmetry.
-            </p>
-
-            <p class="small">
-              ▶ The full chapter walks through the tense café meeting, the details of the illegal
-              bundle James orders, and his conflicted excitement as he returns to the chateau
-              imagining a life where he isn’t just a servant to the Masters – but has a way out if their
-              plans ever go wrong.
-            </p>
-          </article>
-
-          <!-- CHAPTER 6 – TEASER -->
-          <article id="panel-ch6" class="chapter-panel">
-            <p class="lead-in"><em>Chapter Six – Bill’s Big Win</em></p>
-
-            <p>
-              Kate was still asleep when Bill slipped quietly out of the hotel room and headed for
-              the breakfast buffet. Benidorm mornings had a particular feel – that mix of frying bacon,
-              cheap perfume, and sunshine already burning through last night’s hangovers.
-            </p>
-
-            <p>
-              He piled his plate high – bacon, eggs, sausage, mushrooms, beans, toast – then sat
-              with a coffee and finally opened the email from the National Lottery that had been
-              niggling at him since it arrived.
-            </p>
-
-            <p>
-              He expected forty quid, maybe a hundred if the universe was feeling generous.
-              Instead he found numbers his brain refused to process at first:
-              <em>£1,567,898,431.65</em>.
-            </p>
-
-            <p>
-              His hands shook so much he nearly dropped the phone. The email was clinical in its
-              wording – draw number, verification details, instructions to call a special number – but
-              the reality hit him in expanding waves. A lifetime on the line, and now more money
-              than he could spend in ten lifetimes. He almost ran back to the room to wake Kate,
-              heart hammering, words tripping over each other as he tried to tell her they were, in
-              fact, billionaires.
-            </p>
-
-            <p class="small">
-              ▶ The full chapter follows Bill and Kate from disbelief to Barcelona: the verification
-              process, the discreet lottery officials, the magnum of Cristal, the refusal of publicity
-              and the first serious conversation about what to do with a fortune big enough to
-              change more than just their own lives.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    const buttons = document.querySelectorAll(".chapter-btn");
-    const panels = {
-      prologue: document.getElementById("panel-prologue"),
-      ch1: document.getElementById("panel-ch1"),
-      ch2: document.getElementById("panel-ch2"),
-      ch3: document.getElementById("panel-ch3"),
-      ch4: document.getElementById("panel-ch4"),
-      ch5: document.getElementById("panel-ch5"),
-      ch6: document.getElementById("panel-ch6")
-    };
-    const contentTitle = document.getElementById("contentTitle");
-
-    buttons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const target = btn.getAttribute("data-chapter");
-
-        // update active button
-        buttons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-
-        // update active panel
-        Object.keys(panels).forEach(key => {
-          panels[key].classList.remove("active");
-        });
-        panels[target].classList.add("active");
-
-        // update title text
-        switch (target) {
-          case "prologue":
-            contentTitle.textContent = "Prologue";
-            break;
-          case "ch1":
-            contentTitle.textContent = "Chapter 1 – Bill";
-            break;
-          case "ch2":
-            contentTitle.textContent = "Chapter 2 – James Buchanan-Smythe";
-            break;
-          case "ch3":
-            contentTitle.textContent = "Chapter 3 – Oliver Goldstein";
-            break;
-          case "ch4":
-            contentTitle.textContent = "Chapter 4 – Bill & Marcus";
-            break;
-          case "ch5":
-            contentTitle.textContent = "Chapter 5 – James in Annecy";
-            break;
-          case "ch6":
-            contentTitle.textContent = "Chapter 6 – Bill’s Big Win";
-            break;
+      @keyframes bgShift {
+        0% {
+          background-position: 0% 0%;
         }
-      });
-    });
-  </script>
-</body>
+        100% {
+          background-position: 100% 100%;
+        }
+      }
 
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* ==== TOP NAV ==== */
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(14px);
+        background: linear-gradient(
+          to right,
+          rgba(15, 23, 42, 0.96),
+          rgba(15, 23, 42, 0.9),
+          rgba(15, 23, 42, 0.96)
+        );
+        border-bottom: 1px solid var(--border-soft);
+      }
+
+      .nav-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0.75rem 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .logo-orb {
+        width: 32px;
+        height: 32px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 20%, #f97316, #1e293b);
+        box-shadow: 0 0 18px rgba(248, 250, 252, 0.25);
+      }
+
+      .logo-text {
+        font-family: "Orbitron", system-ui;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+
+      nav {
+        display: flex;
+        gap: 0.75rem;
+      }
+
+      .nav-link {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.9rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all 180ms ease-out;
+      }
+
+      .nav-link:hover {
+        color: var(--accent);
+        border-color: var(--accent-soft);
+        background: rgba(15, 23, 42, 0.8);
+        box-shadow: 0 0 16px rgba(56, 189, 248, 0.5);
+      }
+
+      .nav-cta {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      /* ==== LAYOUT ==== */
+
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 1.5rem 1.25rem 3.5rem;
+        flex: 1;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+        gap: 2.5rem;
+        align-items: center;
+      }
+
+      @media (max-width: 860px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ==== HERO ==== */
+
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.3rem 0.75rem;
+        border-radius: 999px;
+        border: 1px solid var(--border-soft);
+        background: radial-gradient(circle at top left, #0f172a, transparent);
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        margin-bottom: 0.9rem;
+      }
+
+      .hero-tag-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.9);
+      }
+
+      .hero-title {
+        font-family: "Orbitron", system-ui;
+        font-size: clamp(2.1rem, 3vw + 1rem, 3rem);
+        line-height: 1.1;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.8rem;
+      }
+
+      .hero-title span {
+        color: var(--accent);
+        text-shadow: var(--glow-strong);
+      }
+
+      .hero-subtitle {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        max-width: 32rem;
+        line-height: 1.6;
+        margin-bottom: 1.3rem;
+      }
+
+      .hero-meta {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: 1.3rem;
+      }
+
+      .hero-meta span {
+        opacity: 0.85;
+      }
+
+      .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 1.6rem;
+      }
+
+      .btn-primary,
+      .btn-ghost {
+        border-radius: 999px;
+        padding: 0.7rem 1.3rem;
+        font-size: 0.9rem;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: all 180ms ease-out;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 600;
+      }
+
+      .btn-primary {
+        background: linear-gradient(120deg, var(--accent), var(--accent-2));
+        color: #020617;
+        box-shadow: var(--glow-strong);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px) scale(1.02);
+        box-shadow: 0 0 40px rgba(56, 189, 248, 0.9);
+      }
+
+      .btn-ghost {
+        border-color: var(--border-soft);
+        color: var(--text-muted);
+        background: rgba(15, 23, 42, 0.8);
+      }
+
+      .btn-ghost:hover {
+        border-color: var(--accent-soft);
+        color: var(--accent);
+        box-shadow: 0 0 16px rgba(56, 189, 248, 0.5);
+        transform: translateY(-1px);
+      }
+
+      .hero-note {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+
+      /* ==== RIGHT SIDE – ANIM CARD ==== */
+
+      .hero-panel {
+        border-radius: 1.4rem;
+        border: 1px solid var(--border-soft);
+        background: radial-gradient(circle at top, #020617, #020617 40%, #000 100%);
+        box-shadow: 0 0 40px rgba(15, 23, 42, 0.8);
+        padding: 1.4rem 1.3rem 1.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-panel-glow {
+        position: absolute;
+        inset: -40%;
+        background:
+          radial-gradient(circle at 20% 0%, rgba(56, 189, 248, 0.18), transparent 55%),
+          radial-gradient(circle at 80% 100%, rgba(248, 113, 113, 0.12), transparent 55%);
+        opacity: 0.8;
+        pointer-events: none;
+      }
+
+      .hero-panel-inner {
+        position: relative;
+        z-index: 1;
+      }
+
+      .future-grid {
+        position: relative;
+        border-radius: 1rem;
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        padding: 1rem;
+        margin-bottom: 1.2rem;
+        background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), #020617);
+        overflow: hidden;
+      }
+
+      .future-grid::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(
+            rgba(148, 163, 184, 0.2) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            90deg,
+            rgba(148, 163, 184, 0.2) 1px,
+            transparent 1px
+          );
+        background-size: 26px 26px;
+        opacity: 0.35;
+        mix-blend-mode: screen;
+      }
+
+      .future-grid-city {
+        position: relative;
+        height: 140px;
+        border-radius: 0.9rem;
+        border: 1px solid rgba(148, 163, 184, 0.4);
+        overflow: hidden;
+        background: linear-gradient(to top, #020617, #0b1120);
+      }
+
+      .future-city-line {
+        position: absolute;
+        inset: auto 0 14%;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(56, 189, 248, 0.9),
+          rgba(248, 113, 113, 0.85),
+          transparent
+        );
+        filter: blur(0.4px);
+      }
+
+      .future-city-block {
+        position: absolute;
+        bottom: 16%;
+        width: 26px;
+        border-radius: 6px 6px 0 0;
+        background: linear-gradient(to top, #020617, #0f172a);
+        border: 1px solid rgba(148, 163, 184, 0.4);
+        overflow: hidden;
+      }
+
+      .future-city-block:nth-child(1) {
+        left: 12%;
+        height: 56px;
+      }
+
+      .future-city-block:nth-child(2) {
+        left: 30%;
+        height: 82px;
+      }
+
+      .future-city-block:nth-child(3) {
+        left: 50%;
+        height: 72px;
+      }
+
+      .future-city-block:nth-child(4) {
+        left: 68%;
+        height: 96px;
+      }
+
+      .future-city-block:nth-child(5) {
+        left: 82%;
+        height: 64px;
+      }
+
+      .future-city-window {
+        width: 60%;
+        height: 3px;
+        margin: 3px auto;
+        border-radius: 999px;
+        background: linear-gradient(
+          90deg,
+          rgba(56, 189, 248, 0.9),
+          rgba(248, 250, 252, 0.9)
+        );
+        opacity: 0.85;
+      }
+
+      .scan-line {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(56, 189, 248, 0.18) 50%,
+          transparent 100%
+        );
+        mix-blend-mode: screen;
+        animation: scan 3.6s linear infinite;
+      }
+
+      @keyframes scan {
+        0% {
+          transform: translateY(-100%);
+        }
+        100% {
+          transform: translateY(100%);
+        }
+      }
+
+      .panel-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--text-muted);
+        margin-bottom: 0.4rem;
+      }
+
+      .panel-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+      }
+
+      .panel-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        margin-bottom: 0.8rem;
+      }
+
+      .panel-meta span {
+        opacity: 0.9;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.45);
+        font-size: 0.7rem;
+        color: var(--text-muted);
+      }
+
+      .pill-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 14px rgba(56, 189, 248, 0.9);
+      }
+
+      .panel-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .chip {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+        border: 1px dashed rgba(148, 163, 184, 0.4);
+        color: var(--text-muted);
+      }
+
+      .panel-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+
+      .panel-footer strong {
+        color: var(--accent);
+      }
+
+      /* ==== CONTENT SECTIONS ==== */
+
+      section {
+        margin-top: 3rem;
+      }
+
+      .section-title {
+        font-family: "Orbitron", system-ui;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        margin-bottom: 0.9rem;
+      }
+
+      .section-title span {
+        color: var(--accent);
+      }
+
+      .section-subtitle {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        max-width: 36rem;
+        margin-bottom: 1.3rem;
+      }
+
+      .chapter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+      }
+
+      .chapter-card {
+        border-radius: 1rem;
+        border: 1px solid var(--border-soft);
+        background: rgba(15, 23, 42, 0.95);
+        padding: 0.9rem 0.95rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        font-size: 0.85rem;
+        transition: transform 160ms ease-out, box-shadow 160ms ease-out,
+          border-color 160ms ease-out;
+        cursor: pointer;
+      }
+
+      .chapter-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent-soft);
+        box-shadow: 0 0 24px rgba(56, 189, 248, 0.55);
+      }
+
+      .chapter-label {
+        font-size: 0.75rem;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+      }
+
+      .chapter-name {
+        font-weight: 600;
+      }
+
+      .chapter-blurb {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        line-height: 1.5;
+      }
+
+      /* ==== VIDEO + GALLERY ==== */
+
+      .media-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+        gap: 1.8rem;
+        align-items: flex-start;
+      }
+
+      @media (max-width: 860px) {
+        .media-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .video-frame {
+        border-radius: 1.2rem;
+        overflow: hidden;
+        border: 1px solid var(--border-soft);
+        background: #020617;
+        box-shadow: 0 0 30px rgba(15, 23, 42, 0.8);
+        position: relative;
+      }
+
+      .video-frame::before {
+        content: "TRAILER";
+        position: absolute;
+        top: 0.6rem;
+        left: 0.9rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        z-index: 2;
+      }
+
+      .video-inner {
+        aspect-ratio: 16 / 9;
+        position: relative;
+        z-index: 1;
+      }
+
+      .video-inner iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.65rem;
+      }
+
+      .gallery-item {
+        border-radius: 0.9rem;
+        border: 1px solid var(--border-soft);
+        background: rgba(15, 23, 42, 0.95);
+        padding: 0.5rem 0.6rem 0.6rem;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      .gallery-img-placeholder {
+        height: 70px;
+        border-radius: 0.7rem;
+        margin-bottom: 0.4rem;
+        background: linear-gradient(
+          135deg,
+          rgba(56, 189, 248, 0.25),
+          rgba(15, 23, 42, 0.8)
+        );
+        border: 1px solid rgba(148, 163, 184, 0.5);
+      }
+
+      /* ==== FOOTER ==== */
+
+      footer {
+        border-top: 1px solid var(--border-soft);
+        padding: 1rem 1.25rem 1.6rem;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-align: center;
+        background: rgba(15, 23, 42, 0.95);
+      }
+
+      footer span {
+        color: var(--accent);
+      }
+
+      /* Simple smooth scroll */
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ===== TOP NAV ===== -->
+    <header>
+      <div class="nav-inner">
+        <div class="logo">
+          <div class="logo-orb"></div>
+          <div class="logo-text">Till the End of the World</div>
+        </div>
+
+        <nav>
+          <a href="#top" class="nav-link">Home</a>
+          <a href="#prologue" class="nav-link">Prologue</a>
+          <a href="#chapters" class="nav-link">Chapters</a>
+          <a href="#media" class="nav-link">Videos</a>
+          <a href="#gallery" class="nav-link">Gallery</a>
+          <a href="#top" class="nav-link nav-cta">Read Online</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main id="top">
+      <div class="grid">
+        <!-- LEFT: HERO TEXT -->
+        <div>
+          <div class="hero-tag">
+            <span class="hero-tag-dot"></span>
+            World of 2050 · UK · Sci-Fi Thriller
+          </div>
+
+          <h1 class="hero-title">
+            <span>Till the End of the World</span><br />
+            Book One
+          </h1>
+
+          <p class="hero-subtitle">
+            A near-future Britain on the edge of collapse. A hidden virus, a
+            billion-pound lottery win, and a chosen few preparing to sleep
+            through the end of the world. This site is your hub for the story,
+            characters, and future releases.
+          </p>
+
+          <div class="hero-meta">
+            <span>Year: 2050</span>
+            <span>Location: Primarily UK, global reach</span>
+            <span>Genre: Futuristic thriller</span>
+          </div>
+
+          <div class="hero-buttons">
+            <a href="#prologue" class="btn-primary">Read the Prologue</a>
+            <a href="#media" class="btn-ghost">Watch Trailer</a>
+          </div>
+
+          <p class="hero-note">
+            Scroll down for chapter previews, videos, and concept art. We can
+            easily add more as the book grows.
+          </p>
+        </div>
+
+        <!-- RIGHT: NEON PANEL -->
+        <aside class="hero-panel">
+          <div class="hero-panel-glow"></div>
+          <div class="hero-panel-inner">
+            <div class="future-grid">
+              <div class="future-grid-city">
+                <div class="future-city-line"></div>
+                <div class="future-city-block">
+                  <div class="future-city-window"></div>
+                  <div class="future-city-window"></div>
+                </div>
+                <div class="future-city-block">
+                  <div class="future-city-window"></div>
+                  <div class="future-city-window"></div>
+                  <div class="future-city-window"></div>
+                </div>
+                <div class="future-city-block">
+                  <div class="future-city-window"></div>
+                  <div class="future-city-window"></div>
+                </div>
+                <div class="future-city-block">
+                  <div class="future-city-window"></div>
+                  <div class="future-city-window"></div>
+                  <div class="future-city-window"></div>
+                </div>
+                <div class="future-city-block">
+                  <div class="future-city-window"></div>
+                </div>
+                <div class="scan-line"></div>
+              </div>
+            </div>
+
+            <div class="panel-label">Story Overview</div>
+            <div class="panel-title">Till the End of the World · Book 1</div>
+
+            <div class="panel-meta">
+              <span>Author: You (Thomas)</span>
+              <span>Status: In development</span>
+              <span>Target length: 70k+ words</span>
+            </div>
+
+            <div class="panel-chips">
+              <div class="chip">Virus conspiracy</div>
+              <div class="chip">Cryogenic bunkers</div>
+              <div class="chip">Global elite</div>
+              <div class="chip">2050 Britain</div>
+            </div>
+
+            <div class="pill">
+              <span class="pill-dot"></span>
+              Live Web Edition · Auto updates when you change this file
+            </div>
+
+            <div class="panel-footer">
+              <span>Next step: Paste the polished prologue &amp; chapters below.</span>
+              <span><strong>Scroll</strong> to explore &darr;</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- ===== PROLOGUE SECTION ===== -->
+      <section id="prologue">
+        <h2 class="section-title">Prologue <span>Preview</span></h2>
+        <p class="section-subtitle">
+          Paste your rewritten, polished Prologue text in this section. For
+          now, here’s a short placeholder. You can replace everything in this
+          paragraph with your real prologue later.
+        </p>
+
+        <p style="font-size: 0.9rem; line-height: 1.7; color: var(--text-main); max-width: 46rem;">
+          In 2050, the night sky over Britain is never truly dark. Drones hum
+          like distant bees, neon adverts float above glass towers, and
+          somewhere beneath the city a handful of people are preparing to watch
+          the world end from behind reinforced glass. While governments distract
+          the public with lotteries and spectacle, the real game is being played
+          in underground labs and private bunkers...
+        </p>
+      </section>
+
+      <!-- ===== CHAPTER CARDS ===== -->
+      <section id="chapters">
+        <h2 class="section-title">Chapter <span>Selections</span></h2>
+        <p class="section-subtitle">
+          These cards are just tasters. You can change the titles and blurbs to
+          match your actual Chapter 1–4 (or more) as we expand the draft.
+        </p>
+
+        <div class="chapter-grid">
+          <div class="chapter-card">
+            <div class="chapter-label">Chapter 1</div>
+            <div class="chapter-name">Benidorm Nights</div>
+            <p class="chapter-blurb">
+              Bill Walker tries to drink away his worries on a cheap holiday,
+              unaware that a ticket in his pocket will soon be worth more than
+              most countries’ defence budgets.
+            </p>
+          </div>
+
+          <div class="chapter-card">
+            <div class="chapter-label">Chapter 2</div>
+            <div class="chapter-name">The Call from London</div>
+            <p class="chapter-blurb">
+              Back in the UK, quiet conversations in boardrooms and bunkers set
+              a darker plan in motion. Oliver Goldstein’s people begin to move.
+            </p>
+          </div>
+
+          <div class="chapter-card">
+            <div class="chapter-label">Chapter 3</div>
+            <div class="chapter-name">Echoes of a Virus</div>
+            <p class="chapter-blurb">
+              In a clinical lab, Susan Kempler stares at a strain of Nova 15
+              that should never exist. She realises the project she helped build
+              might end more than just careers.
+            </p>
+          </div>
+
+          <div class="chapter-card">
+            <div class="chapter-label">Chapter 4</div>
+            <div class="chapter-name">Masters in the Shadows</div>
+            <p class="chapter-blurb">
+              Far from the public eye, the Masters review cryogenic chambers,
+              bunkers, and passenger lists. The rich may survive. The rest of
+              the world will not even know what is coming.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== MEDIA SECTION (VIDEO + GALLERY) ===== -->
+      <section id="media">
+        <h2 class="section-title">Video <span>Zone</span></h2>
+        <p class="section-subtitle">
+          Here we can embed a book trailer, short character introductions, or
+          AI-generated visuals. For now, this uses a placeholder YouTube link.
+          When you have a real video, just paste its link.
+        </p>
+
+        <div class="media-grid">
+          <!-- VIDEO -->
+          <div class="video-frame">
+            <div class="video-inner">
+              <!-- Replace the YouTube link below with your real trailer link when you have one -->
+              <iframe
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="Till the End of the World – Trailer (Placeholder)"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- GALLERY / IMAGE BOXES -->
+          <div id="gallery">
+            <h3 style="font-size: 0.9rem; margin-bottom: 0.7rem;">
+              Futuristic Concept Art &amp; Pictures
+            </h3>
+            <p class="section-subtitle" style="margin-bottom: 0.8rem;">
+              When you’re ready, we can add real images from your library here.
+              For each picture you want, we’ll upload it to an <code>images</code>
+              folder and point these boxes to the correct file.
+            </p>
+
+            <div class="gallery-grid">
+              <div class="gallery-item">
+                <div class="gallery-img-placeholder"></div>
+                <div style="font-weight: 600; margin-bottom: 0.15rem;">
+                  Neon London · 2050
+                </div>
+                A skyline scene you can swap for a real image file from your
+                collection.
+              </div>
+
+              <div class="gallery-item">
+                <div class="gallery-img-placeholder"></div>
+                <div style="font-weight: 600; margin-bottom: 0.15rem;">
+                  Cryogenic Bunkers
+                </div>
+                Concept art or a stock image showing the underground chambers
+                where the Masters plan to wait out the virus.
+              </div>
+
+              <div class="gallery-item">
+                <div class="gallery-img-placeholder"></div>
+                <div style="font-weight: 600; margin-bottom: 0.15rem;">
+                  The Ship
+                </div>
+                A future image of the world cruise / ship storyline once we
+                build that thread visually.
+              </div>
+
+              <div class="gallery-item">
+                <div class="gallery-img-placeholder"></div>
+                <div style="font-weight: 600; margin-bottom: 0.15rem;">
+                  Bill &amp; Kate
+                </div>
+                Space for a character art style image of Bill and Kate in the
+                2050 setting.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        Till the End of the World · <span>Book 1</span> · Web edition powered by
+        GitHub Pages. Update this one file to change the live site.
+      </div>
+    </footer>
+  </body>
 </html>
